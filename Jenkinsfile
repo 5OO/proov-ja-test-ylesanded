@@ -14,6 +14,16 @@ pipeline {
                 echo 'Testing...'
             }
         }
+	stage('cat README') {
+      		when {
+        	branch "fix-*"
+      		}
+      		steps {
+        	sh '''
+          		cat README.md
+        	'''
+      		}
+    	}
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
